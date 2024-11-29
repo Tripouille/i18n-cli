@@ -1,0 +1,7 @@
+{
+	"welcomeMessage": "Welcome to the translation file folder model",
+	"welcomeModal": {
+		"title": "Welcome",
+		"content": "This is the content of the welcome modal"
+	}
+}

@@ -1,0 +1,12 @@
+{
+	"welcomeMessage": "Bienvenido a React y react-i18next",
+	"description": "Este es un ejemplo simple de cómo usar react-i18next",
+	"modal": {
+		"content": "Contenido del modal"
+	},
+	"Kiw": "Kiw",
+	"old": {
+		"content": "Contenido antiguo",
+		"tile": "Título antiguo"
+	}
+}

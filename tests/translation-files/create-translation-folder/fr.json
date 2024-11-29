@@ -1,0 +1,7 @@
+{
+	"welcomeMessage": "Bienvenue dans le modèle de fichier de dossier de traduction",
+	"welcomeModal": {
+		"title": "Bienvenue",
+		"content": "Ceci est le contenu de la modale de bienvenue"
+	}
+}

@@ -1,0 +1,9 @@
+{
+	"oneKey": "One",
+	"categoryKey": {
+		"subKey": "Sub",
+		"subCategory": {
+			"subSubKey": "SubSub"
+		}
+	}
+}

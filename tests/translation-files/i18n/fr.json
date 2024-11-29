@@ -1,0 +1,7 @@
+{
+	"description": "Ceci est un exemple simple de l'utilisation de react-i18next",
+	"modal": {
+		"title": "Titre de la modal"
+	},
+	"welcomeMessage": "Bienvenue sur React et react-i18next"
+}
