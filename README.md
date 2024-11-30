@@ -45,6 +45,11 @@ This command will execute the `status` command of your CLI.
 ### Example
 
 ```typescript
+import {
+	type CreateI18nCliParams,
+	type RetrieveRequiredTranslationTokensReturn,
+} from "@tripouille/i18n-cli";
+
 const params: CreateI18nCliParams = {
 	i18nFolderAbsolutePath: join(__dirname, "./locales"),
 	sourceLanguage: {

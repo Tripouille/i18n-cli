@@ -1,6 +1,7 @@
 import { statusCommand } from "@/commands/status.js";
 import { syncCommand } from "@/commands/sync.js";
-import { type I18nCliConfig, createI18nCli } from "@/index.js";
+import { createI18nCli } from "@/index.js";
+import type { I18nCliConfig } from "@/types/cli.js";
 import { afterEach, describe, expect, it, vi } from "vitest";
 
 vi.mock("@/commands/status.js");
