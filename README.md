@@ -33,14 +33,15 @@ bun run ./cli.ts status
 
 This command will execute the `status` command of your CLI.
 
-## Create i18n cli params
+## Create i18n CLI Params
+
 | Property                          | Required | Description                                                     |
 | --------------------------------- | -------- | --------------------------------------------------------------- |
-| i18nFolderAbsolutePath            | true     | The absolute path to the folder containing your i18n JSON files |
-| sourceLanguage                    | true     | The source language used as the reference for translations      |
-| targetLanguages                   | true     | The target languages to synchronize translations for            |
-| retrieveRequiredTranslationTokens | true     | A function to retrieve missing translation tokens               |
-| translationFileFormat             | false    | Configuration options for the format of the output files        |
+| `i18nFolderAbsolutePath`          | Yes      | The absolute path to the folder containing your i18n JSON files |
+| `sourceLanguage`                  | Yes      | The source language used as the reference for translations      |
+| `targetLanguages`                 | Yes      | The target languages to synchronize translations for            |
+| `retrieveRequiredTranslationTokens` | Yes    | A function to retrieve missing translation tokens               |
+| `translationFileFormat`           | No       | Configuration options for the format of the output files        |
 
 ### Example
 
@@ -78,9 +79,25 @@ const params: CreateI18nCliParams = {
 };
 ```
 
-> Feel free to provide any implementation for `retrieveRequiredTranslationTokens`, such as AI generation, as long as you return the expected result. If the returned promise is rejected, the changes will not be applied to the files, but the succeeded promises will be applied.
+## The RetrieveRequiredTranslationTokens function
 
-> Note: If the `retrieveRequiredTranslationTokens` function returns a result with missing tokens, the changes will not be applied.
+The `retrieveRequiredTranslationTokens` function is a function that retrieves the missing translation tokens for the target languages for a given token path. This function must be provided by the user. The function receives an object with the following properties:
+
+| Property                             | Description                                                                 |
+| ------------------------------------ | --------------------------------------------------------------------------- |
+| `translationTokenPath`               | The token path that requires retrieving the translation tokens for           |
+| `sourceLanguage`                     | The source language used as the reference for translations                   |
+| `upToDateTargetLanguages`            | The target languages that are already up to date                             |
+| `requiredTargetLanguages`            | The target languages for which we need to retrieve a translation             |
+| `upToDateTranslationTokens`          | A map containing all the up-to-date translation tokens                       |
+| `getUpToDateTranslationTokensByTokenPath` | A function to retrieve all the up-to-date translations for a given token path |
+
+The function must return a promise that resolves to a map containing the missing translation tokens for the target languages. The map must have the target language code as the key and the translation token as the value.
+
+
+Feel free to provide any implementation for `retrieveRequiredTranslationTokens`, such as AI generation, as long as you return the expected result. If the returned promise is rejected, the changes will not be applied to the files, but the succeeded promises will be applied.
+
+If the `retrieveRequiredTranslationTokens` function returns a result with missing tokens, the changes will not be applied.
 
 ## Contributing
 
