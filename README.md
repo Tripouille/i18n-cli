@@ -10,9 +10,9 @@ npm i -D @tripouille/i18n-cli
 
 ## Usage
 
-### Step 1: Create Your CLI
+### Step 1: Create your CLI
 
-First, create a TypeScript file for your CLI, for example, `cli.ts`; if you prefer, you can also use JavaScript, but the example provided here is in TypeScript.
+First, create a JavaScript or TypeScript file for your CLI, for example, `cli.ts`. The example provided here is in TypeScript.
 
 ```typescript
 import { type CreateI18nCliParams, createI18nCli } from '@tripouille/i18n-cli'
@@ -23,7 +23,7 @@ const cli = createI18nCli(params);
 cli.parse();
 ```
 
-### Step 2: Compile and Run Your CLI
+### Step 2: Compile and run your CLI
 
 You can compile your TypeScript file and run the resulting JavaScript file, or you can run it directly using a TypeScript runner. Here is an example using `bun`:
 
@@ -33,7 +33,11 @@ bun run ./cli.ts status
 
 This command will execute the `status` command of your CLI.
 
-## Create i18n CLI Params
+## Available commands
+
+You can run --help to see the available commands.
+
+## Create i18n CLI params
 
 | Property                          | Required | Description                                                     |
 | --------------------------------- | -------- | --------------------------------------------------------------- |
