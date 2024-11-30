@@ -1,8 +1,9 @@
 import { join } from "node:path";
-import { type CreateI18nCliParams, createI18nCli } from "@/index.js";
-import type { RetrieveRequiredTranslationTokensReturn } from "@/types/cli.js";
-import type { LanguageCode } from "@/types/language.js";
-import type { TranslationToken } from "@/types/translation.js";
+import {
+	type CreateI18nCliParams,
+	type RetrieveRequiredTranslationTokensReturn,
+	createI18nCli,
+} from "@/index.js";
 
 export const testConfig: CreateI18nCliParams = {
 	i18nFolderAbsolutePath: join(__dirname, "./translation-files/i18n"),
@@ -16,10 +17,7 @@ export const testConfig: CreateI18nCliParams = {
 		{ code: "fr", name: "french" },
 	],
 	async retrieveRequiredTranslationTokens({ requiredTargetLanguages }) {
-		const result: RetrieveRequiredTranslationTokensReturn = new Map<
-			LanguageCode,
-			TranslationToken
-		>();
+		const result: RetrieveRequiredTranslationTokensReturn = new Map();
 
 		for (const language of requiredTargetLanguages) {
 			const translationToken = `translation token for ${language.code}`;

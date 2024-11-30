@@ -4,7 +4,6 @@ import type { I18nCliConfig } from "@/types/cli.js";
 import { Command } from "commander";
 
 export type {
-	I18nCliConfig,
 	RetrieveRequiredTranslationTokens,
 	RetrieveRequiredTranslationTokensReturn,
 } from "@/types/cli.js";
@@ -12,6 +11,7 @@ export type {
 export type CreateI18nCliParams = Omit<I18nCliConfig, "logger"> & {
 	logger?: I18nCliConfig["logger"];
 };
+
 export function createI18nCli(params: CreateI18nCliParams) {
 	const program = new Command();
 	const config: I18nCliConfig = {
