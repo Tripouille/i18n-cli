@@ -5,7 +5,11 @@ import { Command } from "commander";
 
 export type {
 	RetrieveRequiredTranslationTokens,
+	RetrieveRequiredTranslationTokensParams,
 	RetrieveRequiredTranslationTokensReturn,
+	GetUpToDateTranslationTokensByTokenPath,
+	GetUpToDateTranslationTokensByTokenPathReturn,
+	TranslationFileFormat,
 } from "@/types/cli.js";
 
 export type CreateI18nCliParams = Omit<I18nCliConfig, "logger"> & {
