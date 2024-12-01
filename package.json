@@ -1,6 +1,6 @@
 {
   "name": "@tripouille/i18n-cli",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A CLI tool to synchronize and manage translations across multiple target files from a single source file",
   "keywords": [
     "cli",
