@@ -8,6 +8,15 @@ A CLI tool to synchronize and manage translations across multiple target files f
 npm i -D @tripouille/i18n-cli  
 ```
 
+## Available commands
+
+You can run --help to see the available commands.
+
+| Command | Alias | Description | Options |
+| ------- | ----- | ----------- | ------- |
+| `status` | `s` | Show the status of the translation files | `-v, --verbose`: Show the tokens that require changes<br>`-vv, --very-verbose`: Show the tokens that require changes and the associated languages<br>`-foc, --fail-on-changes`: Fail if there are tokens that require changes |
+| `sync` | - | Synchronize translation files | `-lr, --limit-retrieve <limit>`: Limit the number of tokens to retrieve |
+
 ## Usage
 
 ### Step 1: Create your CLI
@@ -32,10 +41,6 @@ bun run ./cli.ts status
 ```
 
 This command will execute the `status` command of your CLI.
-
-## Available commands
-
-You can run --help to see the available commands.
 
 ## Create i18n CLI params
 
