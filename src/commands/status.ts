@@ -1,3 +1,4 @@
+import { exit } from "node:process";
 import type { I18nCliConfig } from "@/types/cli.js";
 import type { Languages } from "@/types/language.js";
 import { computeTranslationFolderRequiredChanges } from "@/utils/compute-translation-folder-required-changes.js";
@@ -9,6 +10,7 @@ import chalk from "chalk";
 export type StatusCommandOptions = {
 	verbose?: boolean;
 	veryVerbose?: boolean;
+	failOnChanges?: boolean;
 };
 
 export async function statusCommand(config: I18nCliConfig, options: StatusCommandOptions) {
@@ -46,5 +48,10 @@ export async function statusCommand(config: I18nCliConfig, options: StatusComman
 				`+ ${tokenPathsToCreateMap.size}`,
 			)}`} ${`${chalk.red(`- ${tokenPathsToDeleteMap.size}`)}`}`,
 		);
+	}
+
+	if (options.failOnChanges) {
+		const changesCount = tokenPathsToCreateMap.size + tokenPathsToDeleteMap.size;
+		if (changesCount) exit(1);
 	}
 }

@@ -1,3 +1,4 @@
+import { exit } from "node:process";
 import { type StatusCommandOptions, statusCommand } from "@/commands/status.js";
 import type { CreateI18nCliParams } from "@/index.js";
 import type { TranslationFolder } from "@/types/translation.js";
@@ -10,6 +11,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 vi.mock("@/utils/create-translation-folder.js");
 vi.mock("@/utils/compute-translation-folder-required-changes.js");
 vi.mock("@/utils/group-translation-folder-required-changes-by-token-path.js");
+vi.mock("node:process");
 
 const config: CreateI18nCliParams = {
 	i18nFolderAbsolutePath: "/path/to/translations",
@@ -108,5 +110,29 @@ describe(statusCommand.name, () => {
 			[chalk.red("- inner.greeting in [es]")],
 			[chalk.red("- inner.deepest.deep in [es]")],
 		]);
+	});
+
+	it("exits with code 1 if failOnChanges is set and there are changes", async () => {
+		const logger = { log: vi.fn() };
+		const options: StatusCommandOptions = { failOnChanges: true };
+
+		await statusCommand({ ...config, logger }, options);
+
+		expect(exit).toHaveBeenCalledWith(1);
+	});
+
+	it("does not exit with code 1 if failOnChanges is set and there are no changes", async () => {
+		const logger = { log: vi.fn() };
+		const options: StatusCommandOptions = { failOnChanges: true };
+
+		vi.mocked(computeTranslationFolderRequiredChanges).mockReturnValue(new Map());
+		vi.mocked(groupTranslationFolderRequiredChangesByTokenPath).mockReturnValue({
+			tokenPathsToCreateMap: new Map(),
+			tokenPathsToDeleteMap: new Map(),
+		});
+
+		await statusCommand({ ...config, logger }, options);
+
+		expect(exit).not.toHaveBeenCalled();
 	});
 });
