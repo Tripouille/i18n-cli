@@ -34,6 +34,7 @@ export function createI18nCli(params: CreateI18nCliParams) {
 			"-vv, --very-verbose",
 			"Show the tokens that require changes and the associated languages",
 		)
+		.option("-foc, --fail-on-changes", "Fail if there are tokens that require changes")
 		.action((options) => {
 			statusCommand(config, options);
 		});
