@@ -1,5 +1,11 @@
 # @tripouille/i18n-cli
 
+## 1.1.0
+
+### Minor Changes
+
+- 6cdaa95: add option to fail on changes in the status command
+
 ## 1.0.2
 
 ### Patch Changes
